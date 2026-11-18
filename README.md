@@ -1,11 +1,33 @@
 # PASTNS — Mangochi passport status pilot
 
 **Passport Application Status Tracking and Notification System**  
-A runnable Django 4.2 reference MVP for Ellen Kondani's final-year project, scoped to the Mangochi Immigration Office pilot.
+A status tracking and notification platform for Mangochi passport applicants — built so that an applicant does not have to travel to the immigration office just to hear whether their passport is ready. Scoped to the Mangochi Immigration Office pilot.
 
 > An applicant should not have to travel to Mangochi just to hear “not ready”. PASTNS records stage changes and makes the latest status available by a low-bandwidth public portal, SMS and USSD.
 
-## What's in this MVP
+## The intention
+
+PASTNS is the passport status tracking and notification system for the Mangochi Immigration Office pilot, developed as Ellen Kondani's final-year project.
+
+The problem it addresses: a passport applicant currently has no low-friction way to learn how their application is progressing. Status lives with the immigration office and is typically only communicated when the applicant physically visits — so people often hear “not ready” only when they arrive, or not at all.
+
+The intention is to make application status transparent and reachable:
+
+- Officers record stage changes (received, under review, approved, printed, ready, collected, …) against a real application.
+- Applicants learn about stage changes through a low-bandwidth public portal, SMS or USSD — in English or Chichewa — without having to travel.
+- The system keeps an auditable trail (stage changes, notifications, notes, contact corrections) so accountability and future policy review do not depend on informal conversations.
+
+The Mangochi pilot is the first real deployment context for this intention; the design is expected to generalise to further offices over time.
+
+## Who it's for
+
+- **Applicants** — public users who need a private way to check status without travelling to Mangochi.
+- **Immigration officers** — staff who register applications, advance stages, notify applicants and account for progress.
+- **Supervisors and administrators** — staff who oversee officers, run batch operations and reports, and govern exceptions.
+
+## What is built
+
+This is the current working scope of the Mangochi pilot build: a runnable Django 4.2 application covering the full officer–applicant status loop.
 
 - **Public portal** (`/`): dual-factor lookup with National ID + phone or tracking code, generic mismatch errors, DB-backed limit of five attempts per National ID/IP in 15 minutes, bilingual English/Chichewa selector (`?lang=ny`, remembered in a cookie), masked phone, stage tracker, collection details and message history.
 - **USSD** (`POST /api/ussd/`): Africa's Talking-style `sessionId`, `serviceCode`, `phoneNumber`, `text` form protocol. The public phone simulator is `/ussd-demo/`; the staff simulator is `/officer/ussd-sim/`. Both call the real endpoint.
@@ -14,11 +36,11 @@ A runnable Django 4.2 reference MVP for Ellen Kondani's final-year project, scop
 - **API**: token-authenticated application creation/detail/stage endpoints, delivery callback and Swagger UI at `/api/docs/` (OpenAPI JSON/YAML at `/api/schema/`).
 - **Audit and lookup controls**: National IDs are hashed in lookup-attempt/audit records and masked in list views. Contact corrections require an officer and reason. Audit entries are append-only in the application model and have no delete/edit UI.
 
-The project is deliberately **not** an applicant self-registration or passport-production system. See [Limitations](#limitations).
+The project is deliberately **not** an applicant self-registration or passport-production system. See [Scope boundaries and roadmap](#scope-boundaries-and-roadmap).
 
-## Run locally
+## Run the current build locally
 
-Requires Python 3.10+ (tested here with Python 3.13), SQLite for the MVP, and pip.
+Requires Python 3.10+ (tested here with Python 3.13), SQLite for the pilot build, and pip.
 
 ```bash
 cd pastns
@@ -88,7 +110,7 @@ Override the target with `PASTNS_BASE_URL`, for example `PASTNS_BASE_URL=https:/
 
 The `core` app contains `Office`, Django `User` + `Profile` roles, `Applicant`, `Application`, configurable `Stage`, `StageChange`, `Notification` (outbox), `SmsTemplate`, `UssdSession`, `AuditLog`, `LookupAttempt`, `LoginAttempt`, and `OfficerNote`. Tracking codes follow `MW-{OFFICE}-{YEAR}-{SEQ:05d}`. Seed IDs and contact details are synthetic.
 
-### Notification gateway seam; no Celery in this MVP
+### Notification gateway and dispatch
 
 `notify(application, event)` creates a durable `Notification` outbox row and calls a small gateway interface synchronously:
 
@@ -127,7 +149,9 @@ Authorization: Token <token>
 
 Other endpoints: `GET /api/applications/{tracking_code}/`, `PUT /api/applications/{tracking_code}/stage/` with `{"stage":"approved","reason":"..."}`, `POST /api/ussd/`, and `POST /api/sms/delivery/`. Backward/skip stage changes through the API require supervisor/admin plus a reason. Use `/api/docs/` for the interactive schema.
 
-## Limitations
+## Scope boundaries and roadmap
+
+These are deliberate scope boundaries for the Mangochi pilot, not unfinished MVP work; each item records what the project intentionally does not attempt yet and where the intention goes next.
 
 - `ConsoleGateway` simulates message acceptance; no live delivery is claimed unless Africa's Talking/SMTP is configured. A provider callback, short-code approval, sender ID, airtime/billing and service credentials are deployment work.
 - Africa's Talking USSD is represented by its callback protocol and simulator; this workspace does not provision the real `*384*123#` shortcode or test with a Malawi carrier.
