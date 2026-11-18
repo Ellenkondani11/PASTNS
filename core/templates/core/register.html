@@ -1,0 +1,12 @@
+{% extends "core/base_officer.html" %}{% load i18n %}
+{% block title %}{% translate "Register application" %}{% endblock %}{% block breadcrumb %}<span aria-hidden="true">/</span><a href="{% url 'officer_home' %}">{% translate "Worklist" %}</a><span aria-hidden="true">/</span><strong>{% translate "Register application" %}</strong>{% endblock %}
+{% block content %}
+<div class="page-title-row"><div><p class="eyebrow">{% translate "New passport record" %}</p><h1>{% translate "Register application" %}</h1><p class="page-intro">{% translate "Enter the applicant's details as shown on their National ID." %}</p></div></div>
+{% if form.errors %}<div class="error-summary" role="alert" tabindex="-1" data-error-summary><h2>{% translate "There is a problem" %}</h2><p>{% translate "Check the fields listed below." %}</p><ul>{% for field in form %}{% for error in field.errors %}<li><a href="#{{ field.id_for_label }}">{{ field.label }}: {{ error }}</a></li>{% endfor %}{% endfor %}{% for error in form.non_field_errors %}<li>{{ error }}</li>{% endfor %}</ul></div>{% endif %}
+<div class="panel form-panel"><form method="post" class="admin-form" data-progress-form novalidate>{% csrf_token %}
+  <div class="form-grid">
+    {% for field in form %}<div class="field-group {% if field.name == 'email' %}field-wide{% endif %}"><label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required-mark" aria-hidden="true">*</span>{% endif %}</label>{% if field.help_text %}<p class="hint" id="hint-{{ field.name }}">{{ field.help_text }}</p>{% endif %}{{ field }}{% if field.errors %}<p class="field-error">{{ field.errors|join:", " }}</p>{% endif %}</div>{% endfor %}
+  </div>
+  <div class="form-actions"><a class="button button-quiet" href="{% url 'officer_home' %}">{% translate "Cancel" %}</a><button class="button button-primary" type="submit"><span class="button-label">{% translate "Register and send SMS" %}</span><span class="button-progress" aria-hidden="true"></span></button></div>
+</form></div>
+{% endblock %}

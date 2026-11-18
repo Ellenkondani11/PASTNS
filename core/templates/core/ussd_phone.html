@@ -1,0 +1,18 @@
+{% load i18n %}
+<div class="ussd-demo-layout">
+  <div class="ussd-explainer"><p class="eyebrow">{% translate "Feature phone access" %}</p><h1>{% translate "USSD simulator" %}</h1><p>{% translate "This page sends each menu choice to the same callback endpoint used by the USSD gateway." %}</p><ul class="plain-list"><li>{% translate "Maximum three menu levels" %}</li><li>{% translate "Responses stay within 160 characters" %}</li><li>{% translate "National ID plus tracking code or matching phone" %}</li></ul><p class="hint">{% translate "Demo shortcut: choose 1, enter a seeded National ID, then enter its tracking code. Seed IDs are numeric; see README." %}</p><a class="text-link" href="/">{% translate "Return to public status check" %} →</a></div>
+  <section class="phone-shell" aria-label="{% translate 'USSD phone simulator' %}">
+    <div class="phone-speaker"></div>
+    <div class="phone-screen">
+      <div class="phone-screen-head"><span>{% translate "USSD session" %}</span><span data-session-state>{% translate "Ready" %}</span></div>
+      <div class="ussd-screen-text" data-ussd-output role="status" aria-live="polite">{% translate "Press Start to connect to *384*123#" %}</div>
+      <label class="phone-input-label" for="ussd-input">{% translate "Your reply" %}</label>
+      <input id="ussd-input" class="ussd-input" data-ussd-input type="text" inputmode="text" autocomplete="off" maxlength="40" aria-describedby="ussd-help" disabled>
+      <small id="ussd-help" class="ussd-help">{% translate "Enter an option, National ID or tracking code." %}</small>
+      <div class="ussd-keypad" aria-label="{% translate 'Phone keypad' %}">{% for key in "123456789*0#" %}<button type="button" data-key="{{ key }}" aria-label="{{ key }}" disabled>{{ key }}</button>{% endfor %}</div>
+      <div class="phone-controls"><button type="button" class="button button-primary" data-ussd-start>{% translate "Start" %}</button><button type="button" class="button button-secondary" data-ussd-send disabled>{% translate "Send" %}</button><button type="button" class="button button-quiet" data-ussd-reset>{% translate "Reset" %}</button></div>
+      <label class="phone-number-label" for="ussd-phone">{% translate "Dialling phone number" %}</label><input id="ussd-phone" data-ussd-phone class="ussd-phone-input" type="tel" value="+265991234567" aria-label="{% translate 'Dialling phone number' %}">
+    </div>
+    <div class="phone-home-button" aria-hidden="true"></div>
+  </section>
+</div>

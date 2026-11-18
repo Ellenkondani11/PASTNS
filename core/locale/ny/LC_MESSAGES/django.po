@@ -1,0 +1,326 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PASTNS 1.0\n"
+"Language: ny\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Passport application status"
+msgstr "Momwe pempho la pasipoti lilili"
+
+msgid "Skip to main content"
+msgstr "Pitani ku zomwe zili patsamba"
+
+msgid "Malawi Immigration"
+msgstr "Zoyang'anira Olowa ndi Kutuluka ku Malawi"
+
+msgid "Language"
+msgstr "Chinenero"
+
+msgid "Change colour theme"
+msgstr "Sinthani maonekedwe a tsamba"
+
+msgid "Mangochi Immigration Office"
+msgstr "Ofesi ya Zoyang'anira Olowa ndi Kutuluka ku Mangochi"
+
+msgid "Call the office"
+msgstr "Imbani ku ofesi"
+
+msgid "Try the USSD demo"
+msgstr "Yesani USSD yachitsanzo"
+
+msgid "A service from the Department of Immigration and Citizenship Services"
+msgstr "Ntchito yochokera ku Dipatimenti Yoyang'anira Olowa ndi Kutuluka ndi Ufulu wa Nzika"
+
+msgid "Check your passport application"
+msgstr "Fufuzani momwe pempho lanu la pasipoti lilili"
+
+msgid "Passport services"
+msgstr "Ntchito za pasipoti"
+
+msgid "Check the latest update before travelling to the office."
+msgstr "Onani uthenga waposachedwa musanapite ku ofesi."
+
+msgid "There is a problem"
+msgstr "Pali vuto"
+
+msgid "Check your National ID and phone number or tracking code"
+msgstr "Onani ID yanu ndi nambala ya foni kapena tracking code"
+
+msgid "National ID number"
+msgstr "Nambala ya ID ya dziko"
+
+msgid "Enter the ID number you gave when you applied."
+msgstr "Lowetsani nambala ya ID yomwe munapereka polemba pempho."
+
+msgid "Phone number or tracking code"
+msgstr "Nambala ya foni kapena tracking code"
+
+msgid "Use the phone number on your application or the code on your receipt, for example MW-MGC-2026-00042."
+msgstr "Gwiritsani ntchito nambala ya foni yomwe munapereka kapena code yomwe ili pa risiti, mwachitsanzo MW-MGC-2026-00042."
+
+msgid "Check status"
+msgstr "Fufuzani momwe pempho lilili"
+
+msgid "Your details are checked privately. We never show which detail did not match."
+msgstr "Zambiri zanu zimafufuzidwa mwachinsinsi. Sititchula chomwe sichinagwirizane."
+
+msgid "Need help?"
+msgstr "Mukufuna thandizo?"
+
+msgid "If your phone number has changed or you entered the wrong one, call Mangochi Immigration Office. Staff will check your ID before changing it."
+msgstr "Ngati nambala yanu ya foni yasintha kapena munalowetsa yolakwika, imbani ku ofesi ya Mangochi. Ogwira ntchito adzayang'ana ID yanu asanasinthe nambalayo."
+
+msgid "No internet access?"
+msgstr "Mulibe intaneti?"
+
+msgid "Dial *384*123# from the phone number on your application."
+msgstr "Imbani *384*123# kuchokera pa nambala ya foni yomwe munapereka."
+
+msgid "Try the demo"
+msgstr "Yesani chitsanzo"
+
+msgid "Check your details"
+msgstr "Onani zomwe mwalowetsa"
+
+msgid "We could not match those details"
+msgstr "Sitinathe kugwirizanitsa zambiri zimenezi"
+
+msgid "For your privacy, check your National ID and phone number or tracking code and try again."
+msgstr "Kuti muteteze chinsinsi chanu, onani ID ndi nambala ya foni kapena tracking code, ndipo yesaninso."
+
+msgid "Still need help? Call Mangochi office on"
+msgstr "Mukufunabe thandizo? Imbani ku ofesi ya Mangochi pa"
+
+msgid "Application status"
+msgstr "Momwe pempho lilili"
+
+msgid "Check another application"
+msgstr "Fufuzani pempho lina"
+
+msgid "Passport application"
+msgstr "Pempho la pasipoti"
+
+msgid "Application progress"
+msgstr "Mmene pempho likuyendera"
+
+msgid "Current stage"
+msgstr "Gawo lomwe lilipo"
+
+msgid "Collected"
+msgstr "Yatengedwa"
+
+msgid "Last updated"
+msgstr "Yasinthidwa komaliza"
+
+msgid "Application type"
+msgstr "Mtundu wa pempho"
+
+msgid "Office"
+msgstr "Ofesi"
+
+msgid "Collection information"
+msgstr "Zokhudza kutenga pasipoti"
+
+msgid "Your passport is ready."
+msgstr "Pasipoti yanu yakonzeka."
+
+msgid "Bring your National ID and this tracking code to collect it."
+msgstr "Bwerani ndi ID yanu ndi tracking code iyi kuti mutenge pasipoti."
+
+msgid "This passport has been marked as collected."
+msgstr "Zalembedwa kuti pasipoti iyi yatengedwa."
+
+msgid "Do not travel to the office yet. We will notify you when your passport is ready."
+msgstr "Musapite ku ofesi panobe. Tidzakudziwitsani pasipoti yanu ikakonzeka."
+
+msgid "Address"
+msgstr "Adiresi"
+
+msgid "Opening hours"
+msgstr "Nthawi zotsegulira"
+
+msgid "Bring"
+msgstr "Bwerani ndi"
+
+msgid "Your National ID and this tracking code"
+msgstr "ID yanu ndi tracking code iyi"
+
+msgid "Get updates by SMS"
+msgstr "Landirani uthenga wa SMS"
+
+msgid "Updates are sent to the phone number on your application:"
+msgstr "Uthenga umatumizidwa ku nambala ya foni yomwe munapereka:"
+
+msgid "Wrong number? Applicants cannot change a number online. Call the office; staff will check your ID."
+msgstr "Nambala yolakwika? Simungasinthe nambala pa intaneti. Imbani ku ofesi; ogwira ntchito adzayang'ana ID yanu."
+
+msgid "Contact the office"
+msgstr "Lumikizanani ndi ofesi"
+
+msgid "Notification history"
+msgstr "Mbiri ya mauthenga"
+
+msgid "View message"
+msgstr "Onani uthenga"
+
+msgid "No messages have been sent yet."
+msgstr "Palibe uthenga womwe watumizidwa panobe."
+
+msgid "If you think these details are wrong, call Mangochi Immigration Office."
+msgstr "Ngati mukuganiza kuti zambiri sizolondola, imbani ku ofesi ya Mangochi."
+
+msgid "Staff sign in"
+msgstr "Kulowa kwa ogwira ntchito"
+
+msgid "Use your officer account to manage applications."
+msgstr "Gwiritsani ntchito akaunti yanu yoyang'anira mapempho."
+
+msgid "Sign-in problem"
+msgstr "Vuto lolowa"
+
+msgid "Username"
+msgstr "Dzina lolowera"
+
+msgid "Password"
+msgstr "Mawu achinsinsi"
+
+msgid "Sign in"
+msgstr "Lowani"
+
+msgid "For the project demo, use the credentials in the README."
+msgstr "Poyesa polojekitiyi, gwiritsani ntchito dzina ndi mawu achinsinsi omwe ali mu README."
+
+msgid "Feature phone access"
+msgstr "Kugwiritsa ntchito foni yosavuta"
+
+msgid "USSD simulator"
+msgstr "Choyeserera cha USSD"
+
+msgid "This page sends each menu choice to the same callback endpoint used by the USSD gateway."
+msgstr "Tsambali limatumiza chisankho chilichonse ku njira yomweyo yomwe USSD imagwiritsa ntchito."
+
+msgid "Maximum three menu levels"
+msgstr "Menyu ili ndi magawo osapitirira atatu"
+
+msgid "Responses stay within 160 characters"
+msgstr "Yankho lililonse silidutsa zilembo 160"
+
+msgid "National ID plus tracking code or matching phone"
+msgstr "ID kuphatikiza tracking code kapena foni yomwe ikugwirizana"
+
+msgid "Demo shortcut: choose 1, enter a seeded National ID, then enter its tracking code. Seed IDs are numeric; see README."
+msgstr "Njira yachidule yoyesera: sankhani 1, lowetsani ID yachitsanzo, kenako tracking code yake. Ma ID a chitsanzo ndi manambala; onani README."
+
+msgid "Return to public status check"
+msgstr "Bwererani kukafufuza momwe pempho lilili"
+
+msgid "USSD phone simulator"
+msgstr "Choyeserera cha foni ya USSD"
+
+msgid "USSD session"
+msgstr "Gawo la USSD"
+
+msgid "Ready"
+msgstr "Takonzeka"
+
+msgid "Press Start to connect to *384*123#"
+msgstr "Dinani Yambani kuti mulumikizane ndi *384*123#"
+
+msgid "Your reply"
+msgstr "Yankho lanu"
+
+msgid "Enter an option, National ID or tracking code."
+msgstr "Lowetsani chisankho, ID kapena tracking code."
+
+msgid "Phone keypad"
+msgstr "Makiyi a foni"
+
+msgid "Start"
+msgstr "Yambani"
+
+msgid "Send"
+msgstr "Tumizani"
+
+msgid "Reset"
+msgstr "Yambitsaninso"
+
+msgid "Dialling phone number"
+msgstr "Nambala ya foni yomwe ikuyimba"
+
+msgid "We could not match those details. Check what you entered or contact Mangochi office."
+msgstr "Sitinathe kugwirizanitsa zambiri zimenezi. Onani zomwe mwalowetsa kapena imbani ku ofesi ya Mangochi."
+
+msgid "Sign-in details do not match."
+msgstr "Dzina kapena mawu achinsinsi sizikugwirizana."
+
+msgid "Sign-in is temporarily locked. Try again in 15 minutes."
+msgstr "Kulowa kwatsekedwa kwakanthawi. Yesaninso pakatha mphindi 15."
+
+msgid "English"
+msgstr "Chingelezi"
+
+msgid "Chichewa"
+msgstr "Chichewa"
+
+msgid "New passport"
+msgstr "Pasipoti yatsopano"
+
+msgid "Renewal"
+msgstr "Kukonzanso pasipoti"
+
+msgid "Replacement"
+msgstr "Yolowa m'malo"
+
+msgid "Active"
+msgstr "Ikugwira ntchito"
+
+msgid "On hold"
+msgstr "Yayimitsidwa"
+
+msgid "Rejected"
+msgstr "Yakanidwa"
+
+msgid "SMS"
+msgstr "SMS"
+
+msgid "Email"
+msgstr "Imelo"
+
+msgid "USSD"
+msgstr "USSD"
+
+msgid "Queued"
+msgstr "Ikudikira kutumizidwa"
+
+msgid "Sent"
+msgstr "Yatumizidwa"
+
+msgid "Delivered"
+msgstr "Yafika"
+
+msgid "Failed"
+msgstr "Yalephera"
+
+msgid "Received"
+msgstr "Yalandiridwa"
+
+msgid "Under review"
+msgstr "Ikuwunikidwa"
+
+msgid "Approved"
+msgstr "Yavomerezedwa"
+
+msgid "Printed"
+msgstr "Yasindikizidwa"
+
+msgid "Ready for collection"
+msgstr "Yakonzeka kutengedwa"
+
+msgid "Passport status lookup"
+msgstr "Kufufuza momwe pasipoti ilili"
+
+msgid "Malawi Immigration emblem"
+msgstr "Chizindikiro cha Zoyang'anira Olowa ndi Kutuluka ku Malawi"

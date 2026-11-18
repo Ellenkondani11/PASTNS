@@ -1,0 +1,66 @@
+{% extends "core/base_public.html" %}{% load i18n %}
+{% block title %}{% translate "Application status" %} · {{ application.tracking_code }}{% endblock %}
+{% block content %}
+<div class="back-link"><a href="/">← {% translate "Check another application" %}</a></div>
+<section class="service-heading status-heading">
+  <p class="eyebrow">{% translate "Passport application" %}</p>
+  <h1>{{ application.tracking_code }}</h1>
+  <p class="status-person">{{ application.applicant.first_name }} {{ application.applicant.surname }}</p>
+</section>
+<div class="status-banner status-{{ application.current_stage.colour }}" role="status">
+  <span class="status-tag status-{{ application.current_stage.colour }}">{% translate application.current_stage.name %}</span>
+  <p>{{ stage_text }}</p>
+</div>
+<section class="tracker-section" aria-labelledby="tracker-title">
+  <h2 id="tracker-title">{% translate "Application progress" %}</h2>
+  <ol class="stage-tracker">
+    {% for step in stage_steps %}
+      <li class="stage-step {% if step.order < application.current_stage.order and application.status != 'on_hold' and application.status != 'rejected' %}is-complete{% elif step.key == application.current_stage.key %}is-current{% elif application.status == 'on_hold' and step.key == application.previous_stage.key %}is-current{% endif %}">
+        <span class="step-marker" aria-hidden="true">{% if step.order < application.current_stage.order and application.status != 'on_hold' and application.status != 'rejected' %}<svg class="icon"><use href="#icon-check"/></svg>{% else %}{{ forloop.counter }}{% endif %}</span>
+        <span class="step-name">{% translate step.name %}</span>
+        {% if step.key == application.current_stage.key or application.status == 'on_hold' and step.key == application.previous_stage.key %}<span class="visually-hidden">{% translate "Current stage" %}</span>{% endif %}
+      </li>
+    {% endfor %}
+    {% if application.status == 'collected' %}<li class="stage-step is-complete"><span class="step-marker"><svg class="icon"><use href="#icon-check"/></svg></span><span class="step-name">{% translate "Collected" %}</span></li>{% endif %}
+  </ol>
+</section>
+<div class="summary-list">
+  <div><dt>{% translate "Last updated" %}</dt><dd>{{ application.updated_at|date:"j F Y, H:i" }}</dd></div>
+  <div><dt>{% translate "Application type" %}</dt><dd>{{ application.get_application_type_display }}</dd></div>
+  <div><dt>{% translate "Office" %}</dt><dd>{% translate application.office.name %}, {{ application.office.district }}</dd></div>
+</div>
+<section class="collection-panel" aria-labelledby="collection-title">
+  <h2 id="collection-title">{% translate "Collection information" %}</h2>
+  {% if application.current_stage.key == 'ready' %}
+    <p class="collection-action"><strong>{% translate "Your passport is ready." %}</strong> {% translate "Bring your National ID and this tracking code to collect it." %}</p>
+  {% elif application.status == 'collected' %}
+    <p>{% translate "This passport has been marked as collected." %}</p>
+  {% else %}
+    <p>{% translate "Do not travel to the office yet. We will notify you when your passport is ready." %}</p>
+  {% endif %}
+  <dl class="summary-list compact">
+    <div><dt>{% translate "Address" %}</dt><dd>{{ application.office.address }}</dd></div>
+    <div><dt>{% translate "Opening hours" %}</dt><dd>{{ collection_hours }}</dd></div>
+    <div><dt>{% translate "Bring" %}</dt><dd>{% translate "Your National ID and this tracking code" %}</dd></div>
+  </dl>
+</section>
+<section class="notification-card" aria-labelledby="notification-title">
+  <div class="notification-title-row"><h2 id="notification-title">{% translate "Get updates by SMS" %}</h2><span class="mini-check"><svg class="icon"><use href="#icon-check"/></svg></span></div>
+  <p>{% translate "Updates are sent to the phone number on your application:" %} <strong>{{ application.applicant.masked_phone }}</strong></p>
+  <p class="small-copy">{% translate "Wrong number? Applicants cannot change a number online. Call the office; staff will check your ID." %} <a href="tel:{{ application.office.phone|default:'+2651594300' }}">{% translate "Contact the office" %}</a></p>
+</section>
+<section class="history-section" aria-labelledby="history-title">
+  <h2 id="history-title">{% translate "Notification history" %}</h2>
+  {% if histories %}
+  <ol class="message-history">
+    {% for item in histories %}
+    <li><div class="history-heading"><strong>{{ item.label }}</strong><span class="outcome outcome-{{ item.row.status }}">{{ item.row.get_status_display }}</span></div>
+      <p>{{ item.row.created_at|date:"j M Y, H:i" }} · {{ item.row.get_channel_display }} · {{ item.destination }}</p>
+      <details><summary>{% translate "View message" %}</summary><p class="message-body">{{ item.row.body }}</p></details>
+    </li>
+    {% endfor %}
+  </ol>
+  {% else %}<p>{% translate "No messages have been sent yet." %}</p>{% endif %}
+</section>
+<div class="support-footer"><p>{% translate "If you think these details are wrong, call Mangochi Immigration Office." %}</p><a class="button button-secondary" href="tel:+2651594300">{% translate "Call the office" %}: +265 1 594 300</a></div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static i18n %}
+<!doctype html>
+<html lang="{{ current_language }}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% translate "Officer console" %}{% endblock %} · PASTNS</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}?v=8"><script defer src="{% static 'js/app.js' %}?v=8"></script>
+</head>
+<body class="officer-body">
+<a class="skip-link" href="#officer-main">{% translate "Skip to main content" %}</a>
+<svg class="icon-library" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol><symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M10 18h4"/></symbol><symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m4 7 8 6 8-6"/></symbol><symbol id="icon-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol><symbol id="icon-warning" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v5m0 3h.01"/></symbol><symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="icon-print" viewBox="0 0 24 24"><path d="M7 8V3h10v5M7 17H4a2 2 0 0 1-2-2v-4a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v4a2 2 0 0 1-2 2h-3"/><path d="M7 14h10v7H7z"/></symbol><symbol id="icon-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+</svg>
+<div class="officer-layout">
+  <aside class="officer-sidebar">
+    <a class="brand officer-brand" href="{% url 'officer_home' %}"><span class="brand-mark">P</span><span><strong>PASTNS</strong><small>{% translate "Officer console" %}</small></span></a>
+    <div class="office-chip"><span class="office-dot"></span><span>{{ user.profile.office.name|default:_('No office assigned') }}</span></div>
+    <nav class="side-nav" aria-label="{% translate 'Officer navigation' %}">
+      <a href="{% url 'officer_home' %}" class="{% if request.resolver_match.url_name == 'officer_home' %}is-active{% endif %}"><span class="nav-glyph">▤</span>{% translate "Worklist" %}</a>
+      <a href="{% url 'register_application' %}" class="{% if request.resolver_match.url_name == 'register_application' %}is-active{% endif %}"><span class="nav-glyph">＋</span>{% translate "Register application" %}</a>
+      <a href="{% url 'notification_outbox' %}" class="{% if request.resolver_match.url_name == 'notification_outbox' %}is-active{% endif %}"><span class="nav-glyph">↗</span>{% translate "Notification outbox" %}</a>
+      {% if user.profile.role == 'supervisor' or user.profile.role == 'admin' %}<a href="{% url 'reports' %}" class="{% if request.resolver_match.url_name == 'reports' %}is-active{% endif %}"><span class="nav-glyph">▥</span>{% translate "Reports" %}</a>{% endif %}
+      <a href="{% url 'officer_ussd_sim' %}" class="{% if request.resolver_match.url_name == 'officer_ussd_sim' %}is-active{% endif %}"><span class="nav-glyph">▣</span>{% translate "USSD simulator" %}</a>
+      <a href="{% url 'audit_log' %}" class="{% if request.resolver_match.url_name == 'audit_log' %}is-active{% endif %}"><span class="nav-glyph">◷</span>{% translate "Audit log" %}</a>
+      {% if user.profile.role == 'admin' %}<a href="{% url 'admin_console' %}" class="{% if request.resolver_match.url_name == 'admin_console' %}is-active{% endif %}"><span class="nav-glyph">⚙</span>{% translate "Administration" %}</a>{% endif %}
+    </nav>
+    <div class="sidebar-bottom"><a class="portal-link" href="/">{% translate "Public portal" %} <span aria-hidden="true">↗</span></a><div class="sidebar-user"><span class="user-avatar">{{ user.first_name|default:user.username|slice:":1"|upper }}</span><span><strong>{{ user.get_full_name|default:user.username }}</strong><small>{{ user.profile.get_role_display }}</small></span></div><form method="post" action="{% url 'officer_logout' %}">{% csrf_token %}<button class="sidebar-logout" type="submit">{% translate "Sign out" %}</button></form></div>
+  </aside>
+  <div class="officer-main-wrap">
+    <header class="officer-topbar"><button type="button" class="mobile-menu-button" data-menu-toggle aria-expanded="false">☰ <span>{% translate "Menu" %}</span></button><div class="breadcrumb"><span>{% translate "Mangochi pilot" %}</span>{% block breadcrumb %}{% endblock %}</div><div class="topbar-right"><span class="live-indicator"><i></i>{% translate "Demo system" %}</span><button class="theme-toggle" type="button" data-theme-toggle aria-label="{% translate 'Change colour theme' %}" title="{% translate 'Change colour theme' %}">◐</button></div></header>
+    <main id="officer-main" class="officer-content">
+      <div class="message-stack" aria-live="polite">{% for message in messages %}<div class="flash flash-{{ message.tags }}" role="status">{{ message }}</div>{% endfor %}</div>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+<div class="sr-only" aria-live="polite" data-live-region></div>
+</body></html>

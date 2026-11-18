@@ -1,0 +1,8 @@
+{% extends "core/base_public.html" %}{% load i18n %}
+{% block title %}{% translate "Staff sign in" %}{% endblock %}
+{% block content %}
+<div class="service-heading"><p class="eyebrow">{% translate "Mangochi Immigration Office" %}</p><h1>{% translate "Staff sign in" %}</h1><p class="lead">{% translate "Use your officer account to manage applications." %}</p></div>
+{% if error %}<div class="error-summary" role="alert"><h2>{% translate "Sign-in problem" %}</h2><p>{{ error }}</p></div>{% endif %}
+<form method="post" class="service-form" data-progress-form>{% csrf_token %}<div class="field-group"><label for="username">{% translate "Username" %}</label><input id="username" name="username" autocomplete="username" required autofocus></div><div class="field-group"><label for="password">{% translate "Password" %}</label><input id="password" name="password" type="password" autocomplete="current-password" required></div><button class="button button-primary button-large" type="submit"><span class="button-label">{% translate "Sign in" %}</span><span class="button-progress" aria-hidden="true"></span></button></form>
+<p class="help-line">{% translate "For the project demo, use the credentials in the README." %}</p>
+{% endblock %}
